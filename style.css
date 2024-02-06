@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #64B5F6;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    margin: 10px auto;
+    width: fit-content;
+}
+
+.add {
+    position: relative;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 50px;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.add input {
+    border: none;
+    outline: none;
+    padding: 17px;
+    border-radius: 50px;
+    width: 400px;
+    background-color: #eee;
+}
+
+.add i {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #0D47A1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    right: 10px;
+    cursor: pointer;
+}
+
+.tasks {
+    list-style: none;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.tasks li {
+    width: 400px;
+    background-color: #eee;
+    padding: 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    animation: toptobottom 1s linear forwards;
+}
+
+@keyframes toptobottom {
+    from {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tasks li.delete {
+    animation: remove 1s cubic-bezier(0.55, -0.04, 0.91, .094) forwards;
+    transform-origin: 0% 100%;
+}
+
+@keyframes remove {
+    0% {
+        opacity: 1;
+        transform: rotate(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotate(90deg);
+    }
+}
+
+.tasks li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.tasks li div i:first-child {
+    color: green;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.tasks li div i:last-child {
+    color: red;
+    cursor: pointer;
+}
+
+.alert {
+    position: absolute;
+    color: green;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25px;
+    display: none;
+    animation: op 5s forwards;
+}
+
+@keyframes op {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
